@@ -3,3 +3,12 @@
 a {
 	color: inherit;
 }
+
+tr.hover {
+   cursor: pointer;
+}
+
+.imagem-perfil{
+	width: 100px;
+	height: 100px;
+}
