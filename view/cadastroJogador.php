@@ -75,7 +75,24 @@
 								</div>
 
 								<div class="input-field col s6">
-									<input id="equipe" name="equipe" type="text" />
+									<!-- <input id="equipe" name="equipe" type="text" /> -->
+									<select id="equipe" name="equipe">
+										<option value="" disabled="true" selected="true">Selecione uma equipe</option>
+										<?php
+											require_once("../persistence/conexao.php");
+											require_once("../persistence/equipeDAO.php");
+
+											$c = new Conexao();
+											$e = new EquipeDAO();
+											$equipes = $e->listarEquipes($c->getLink());
+											if($equipes != null) {
+												foreach($equipes as $equipe) {
+													echo "<option value='" . $equipe->getIdEquipe() . "'>";
+													echo $equipe->getNome() . "</option>";
+												}
+											}
+										?>
+									</select>
 									<label for="eqipe">Equipe</label>
 								</div>
 							</div>
@@ -103,5 +120,10 @@
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('select').material_select();
+		});
+	</script>
 </body>
 </html>

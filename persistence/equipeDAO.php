@@ -3,7 +3,7 @@
 
   class EquipeDAO{
     function cadastrarEquipe($equipe, $link){
-      $SQL = "INSERT INTO Equipe VALUES (0,'".$equipe->getNome()."');";
+      $SQL = "INSERT INTO Equipe(`idEquipe`, `nomeEquipe`) VALUES ('','".$equipe->getNome()."');";
       echo $SQL;
       if(!mysqli_query($link, $SQL)){
         die("Nao foi possivel inserir equipe");
@@ -37,7 +37,7 @@
       if(mysqli_num_rows($retorno) > 0){
         $ret = $retorno->fetch_all();
         foreach($ret as $linha){
-          $equipes[] = new Equipe($linha[1]);
+          $equipes[] = new Equipe($linha[1], $linha[0]);
         }
         return $equipes;
       }

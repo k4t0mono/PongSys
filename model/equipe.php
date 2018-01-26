@@ -4,10 +4,12 @@
   class Equipe{
     private $jogadores;
     private $nomeEquipe;
+    private $idEquipe;
 
-    function __construct($nomeEquipe){
+    function __construct($nomeEquipe, $idEquipe){
       $this->jogadores = array();
       $this->nomeEquipe = $nomeEquipe;
+      $this->idEquipe = $idEquipe;
     }
 
     public function addJogador($jogador){
@@ -20,6 +22,10 @@
 
     public function getNome(){
       return $this->nomeEquipe;
+    }
+
+    public function getIdEquipe() {
+      return $this->idEquipe;
     }
   }
 
