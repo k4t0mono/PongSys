@@ -8,8 +8,8 @@
 
   	function Conexao() {
   		$this->servidor = 'localhost';
-  		$this->usuario = 'root';
-  		$this->senha = '';
+  		$this->usuario = 'PongSys';
+  		$this->senha = 'plFCgqoRAuS22PGy';
   		$this->bd = 'PongSys';
 
   		$this->link = mysqli_connect($this->servidor,
