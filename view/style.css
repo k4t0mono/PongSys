@@ -12,3 +12,7 @@ tr.hover {
 	width: 100px;
 	height: 100px;
 }
+
+.card p{
+	font-size: 1.5em;
+}

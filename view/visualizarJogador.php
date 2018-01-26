@@ -15,10 +15,26 @@
 			<a href="#" class="brand-logo">PongSys</a>
 
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="view/jogadores.html">Jogadores</a></li>
-				<li><a href="view/equipes.html">Equipes</a></li>
-				<li><a href="view/partidas.html">Partidas</a></li>
+				<li><a href="../view">Home</a></li>
+				<li><a href="../view/listarJogadores.php">Jogadores</a></li>
+				<li><a href="../view/listarEquipes.php">Equipes</a></li>
+				<li><a href="../view/listarPartidas.php">Partidas</a></li>
+				<?php
+					require_once("../persistence/jogadorDAO.php");
+					require_once("../persistence/conexao.php");
+					session_start();
+					if(array_key_exists('user',$_SESSION)){
+						$conexao = new Conexao();
+						$jogadorDAO = new JogadorDAO();
+						$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
+						echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+						echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+					}
+					else{
+						echo "<li><a href='login.html'>Login</a></li>";
+					}
+				?>
+
 			</ul>
 		</div>
 	</nav>
@@ -34,12 +50,15 @@
 			$e = new EquipeDAO();
       $j = new JogadorDAO();
 			$jogador = $j->consultarJogadorPorNick($nick,$c->getLink());
+      $equipe = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
       // echo "<div class='col s4'>";
       echo "<div class='card'>";
-      echo "<div class='row'>";
-      echo "<div class='col s6 right-align'><img src='./img/perfil.jpg' class='imagem-perfil'/></div>";
-      echo "<div class='col s6 left-align'><h3>".$jogador->getNickname()."</h3></div>";
-      echo "</div>";
+      echo "  <div class='row'>";
+      echo "    <div class='col s6 right-align'><img src='./img/perfil.jpg' class='imagem-perfil'/></div>";
+      echo "    <div class='col s6 left-align'><h3>".$jogador->getNickname()."</h3></div>";
+      echo "  </div>";
+      echo "  <p><b>Nome:</b> ".$jogador->getNome()."</p>";
+      echo "  <p><b>Equipe:</b> <a href='visualizarEquipe.php?nome=".$equipe->getNome()."'>".$equipe->getNome()."</a></p>";
       echo "</div>";
       // echo "</div>";
 

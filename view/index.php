@@ -16,10 +16,6 @@
 			<a href="#" class="brand-logo">PongSys</a>
 
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="view/jogadores.html">Jogadores</a></li>
-				<li><a href="view/equipes.html">Equipes</a></li>
-				<li><a href="view/partidas.html">Partidas</a></li>
 				<?php
 					require_once("../persistence/jogadorDAO.php");
 					require_once("../persistence/conexao.php");

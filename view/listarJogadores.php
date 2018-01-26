@@ -16,15 +16,32 @@
 			<a href="#" class="brand-logo">PongSys</a>
 
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="view/jogadores.html">Jogadores</a></li>
-				<li><a href="view/equipes.html">Equipes</a></li>
-				<li><a href="view/partidas.html">Partidas</a></li>
+				<li><a href="../view">Home</a></li>
+				<li><a href="../view/listarJogadores.php">Jogadores</a></li>
+				<li><a href="../view/listarEquipes.php">Equipes</a></li>
+				<li><a href="../view/listarPartidas.php">Partidas</a></li>
+				<?php
+					require_once("../persistence/jogadorDAO.php");
+					require_once("../persistence/conexao.php");
+					session_start();
+					if(array_key_exists('user',$_SESSION)){
+						$conexao = new Conexao();
+						$jogadorDAO = new JogadorDAO();
+						$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
+						echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+						echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+					}
+					else{
+						echo "<li><a href='login.html'>Login</a></li>";
+					}
+				?>
+
 			</ul>
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container center-align">
+		<h3>Jogadores:</h3>
 		<?php
       require_once("../persistence/jogadorDAO.php");
 			require_once("../persistence/conexao.php");
@@ -33,22 +50,28 @@
 			$j = new JogadorDAO();
 			$e = new EquipeDAO();
 			$jogadores = $j->listarJogadores($c->getLink());
+			echo "<div class='card'>";
 			echo "<table border = '1' class = 'highlight centered'>";
 			echo "<thead><tr><th>"."Nome"."</th><th>"."Nickname"."</th><th>"."Equipe"."</th></tr></thead>";
 			echo "<tbody>";
 			foreach($jogadores as $jogador){
-				echo "<a href = '../view'><tr>";
-				echo "<td>".$jogador->getNome()."</td>";
+				echo "<tr>";
+				echo "<td><a href = '../view/visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNome()."</td>";
 				echo "<td>".$jogador->getNickname()."</td>";
 				$equipe = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
 				echo "<td>".$equipe->getNome()."</td>";
-				echo "</tr></a>";
+				echo "</tr>";
 			}
 			echo "</tbody>";
+			echo "</table>";
+			echo "</div>";
+			echo "<a href='./cadastro/cadastroJogador.html'><button type='button' class='waves-effect waves-light btn'>Cadastrar novo jogador</button></a>";
+
 		?>
 	</div>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/tabelas.js"></script>
 </body>
 </html>
