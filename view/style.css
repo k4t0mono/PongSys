@@ -1,9 +1,5 @@
 /* style.css */
 
-body {
-	background-image: url("back.jpg");
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+a {
+	color: inherit;
 }
