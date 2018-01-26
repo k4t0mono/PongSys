@@ -12,11 +12,15 @@
   echo $jogador->getSenha();
   echo $senha;
   if($jogador->getSenha() == $senha){
-    echo "deu bao";
+    session_start();
+    $_SESSION["user"] = $email;
+    echo "Log in feito com sucesso <br>";
 
   }
   else{
-    echo "deu ruim";
+    die("Log in falhou");
   }
+
+  header('Location: ../view')
 
 ?>

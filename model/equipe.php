@@ -17,6 +17,10 @@
     public function getJogadores(){
       return $this->jogadores;
     }
+
+    public function getNome(){
+      return $this->nomeEquipe;
+    }
   }
 
 

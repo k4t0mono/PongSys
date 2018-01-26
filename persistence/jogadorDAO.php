@@ -1,5 +1,5 @@
 <?php
-  require_once("../model/jogador.php");
+  require_once('../model/jogador.php');
 
   class JogadorDAO{
     function cadastrarJogador($jogador, $link){
@@ -34,7 +34,23 @@
       return null;
     }
 
+    function listarJogadores($link){
+      $SQL = "SELECT * FROM Jogador";
+      $retorno = mysqli_query($link, $SQL);
 
+      if(!$retorno){
+        die("Erro na consulta de cliente");
+      }
+      $jogadores = array();
+      if(mysqli_num_rows($retorno) > 0){
+        $ret = $retorno->fetch_all();
+        foreach($ret as $linha){
+          $jogadores[] = new Jogador($linha[0],$linha[1],$linha[2],$linha[3],$linha[4]);
+        }
+        return $jogadores;
+      }
+      return null;
+    }
   }
 
 
