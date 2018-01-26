@@ -11,7 +11,7 @@
 
   		if (!mysqli_query($link, $SQL)) {
   			die("Erro na inserção de cliente");
-  		}
+  		} 
     }
 
     function consultarPessoaPorEmail($email, $link){
