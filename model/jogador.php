@@ -6,7 +6,7 @@
     private $senha;
     private $idEquipe;
 
-    function __construct($nickname, $nome, $email, $senha, $idEquipe){
+    function __construct($email, $idEquipe, $nickname, $nome, $senha){
       $this->nickname = $nickname;
       $this->nome = $nome;
       $this->email = $email;

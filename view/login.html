@@ -18,11 +18,11 @@
 					</div>
 				</div>
 
-				<form class="login-form">
+				<form class="login-form" action="../control/login.php" method="post">
 					<div class="row margin">
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
-							<input id="email" type="email" class="validate">
+							<input id="email" type="email" class="validate" name="email">
 							<label for="email" data-error="Insira um email válido">First Name</label>
 						</div>
 					</div>
@@ -30,16 +30,17 @@
 					<div class="row margin">
 						<div class="input-field col s12">
 							<i class="material-icons prefix">lock_outline</i>
-							<input id="icon_prefix" type="text" class="validate">
+							<input id="icon_prefix" type="text" class="validate" name="senha">
 							<label for="icon_prefix">First Name</label>
 						</div>
 					</div>
 
 					<div class="row margin">
 						<div class="input-field col s12">
-							
+
 						</div>
 					</div>
+					<button type="submit">Submit</button>
 				</form>
 			</div>
 		</div>

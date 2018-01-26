@@ -10,7 +10,7 @@
   $equipe = $_POST["equipe"];
   $senha = $_POST["pass"];
 
-  $jogador = new Jogador($nick, $nome, $email, $senha, $equipe);
+  $jogador = new Jogador($email, $equipe, $nick, $nome, $senha);
 
   $conexao = new Conexao();
 
