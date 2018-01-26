@@ -28,8 +28,13 @@
 						$conexao = new Conexao();
 						$jogadorDAO = new JogadorDAO();
 						$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
-						echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
-						echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						if($usuario != null){
+							echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+							echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						}
+						else{
+							echo "<li><a href='login.html'>Login</a></li>";
+						}
 					}
 					else{
 						echo "<li><a href='login.html'>Login</a></li>";
@@ -50,22 +55,27 @@
 			$j = new JogadorDAO();
 			$e = new EquipeDAO();
 			$jogadores = $j->listarJogadores($c->getLink());
-			echo "<div class='card'>";
-			echo "<table border = '1' class = 'highlight centered'>";
-			echo "<thead><tr><th>"."Nome"."</th><th>"."Nickname"."</th><th>"."Equipe"."</th></tr></thead>";
-			echo "<tbody>";
-			foreach($jogadores as $jogador){
-				echo "<tr>";
-				echo "<td><a href = '../view/visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNome()."</td>";
-				echo "<td>".$jogador->getNickname()."</td>";
-				$equipe = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
-				echo "<td>".$equipe->getNome()."</td>";
-				echo "</tr>";
+			if($jogadores != null){
+				echo "<div class='card'>";
+				echo "<table border = '1' class = 'highlight centered'>";
+				echo "<thead><tr><th>"."Nome"."</th><th>"."Nickname"."</th><th>"."Equipe"."</th></tr></thead>";
+				echo "<tbody>";
+				foreach($jogadores as $jogador){
+					echo "<tr>";
+					echo "<td><a href = '../view/visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNome()."</td>";
+					echo "<td>".$jogador->getNickname()."</td>";
+					$equipe = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
+					echo "<td>".$equipe->getNome()."</td>";
+					echo "</tr>";
+				}
+				echo "</tbody>";
+				echo "</table>";
+				echo "</div>";
 			}
-			echo "</tbody>";
-			echo "</table>";
-			echo "</div>";
-			echo "<a href='./cadastro/cadastroJogador.html'><button type='button' class='waves-effect waves-light btn'>Cadastrar novo jogador</button></a>";
+			else{
+				echo "<p>Não há jogadores registrados</p>";
+			}
+			echo "<a href='./cadastroJogador.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar novo jogador</button></a>";
 
 		?>
 	</div>

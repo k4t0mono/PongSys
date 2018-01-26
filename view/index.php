@@ -24,8 +24,13 @@
 						$conexao = new Conexao();
 						$jogadorDAO = new JogadorDAO();
 						$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
-						echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
-						echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						if($usuario != null){
+							echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+							echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						}
+						else{
+							echo "<li><a href='login.html'>Login</a></li>";
+						}
 					}
 					else{
 						echo "<li><a href='login.html'>Login</a></li>";
@@ -37,7 +42,7 @@
 	</nav>
 
 	<div class="container center-align">
-		<a href="./cadastro/cadastroJogador.html">
+		<a href="./cadastroJogador.php">
 			<div class="row">
 				<div class="col s8 m8 offset-m2">
 					<div class="card blue-grey darken-1 waves-effect waves-light ">
@@ -48,7 +53,7 @@
 				</div>
 			</a>
 
-			<a href="./cadastro/cadastroEquipe.html">
+			<a href="./cadastroEquipe.php">
 				<div class="col s8 m8 offset-m2">
 					<div class="card blue-grey darken-1 waves-effect waves-light ">
 						<div class="card-content white-text">

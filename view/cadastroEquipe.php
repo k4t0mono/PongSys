@@ -4,10 +4,9 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
-
-	<link rel="stylesheet" href="./style.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -45,37 +44,34 @@
 		</div>
 	</nav>
 
-	<div class="container center-align">
-		<h3>Equipes:</h3>
-		<?php
-			require_once("../persistence/conexao.php");
-			require_once("../persistence/equipeDAO.php");
-      $c = new Conexao();
-			$e = new EquipeDAO();
-			$equipes = $e->listarEquipes($c->getLink());
-			if($equipes != null){
-				echo "<div class='card'>";
-				echo "<table border = '1' class = 'highlight centered'>";
-				echo "<thead><tr><th>"."Nome"."</th></tr></thead>";
-				echo "<tbody>";
-				foreach($equipes as $equipe){
-					echo "<tr>";
-					echo "<td><a href='visualizarEquipe.php?nome=".$equipe->getNome()."'></a>".$equipe->getNome()."</td>";
-					echo "</tr>";
-				}
-			echo "</tbody>";
-			echo "</table>";
-			echo "</div>";
-			}
-			else{
-				echo "<p>Não há equipes registradas.</p>";
-			}
-			echo "<a href='cadastroEquipe.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar nova equipe</button></a>";
-		?>
+	<div class="container">
+		<div class="row">
+			<div class="col s8 m8 offset-m2">
+				<div class="card blue-grey darken-1">
+					<div class="card-content white-text">
+						<span class="card-title center">Cadastro de Equipe</span>
+					</div>
+
+					<div class="card-content white-text">
+						<form method="post" action="../control/cadastrarEquipe.php">
+							<div class="row margin">
+								<div class="input-field col s12">
+									<input id="nome" type="text" name="nome"/>
+									<label for="nome">Nome</label>
+								</div>
+							</div>
+							<div class='center-align'>
+								<button type="submit" class="waves-effect waves-light btn">Enviar</button>
+								<button type="reset" class="waves-effect waves-light btn">Limpar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
-  <script type="text/javascript" src="js/tabelas.js"></script>
 </body>
 </html>

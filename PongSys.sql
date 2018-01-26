@@ -21,7 +21,7 @@ USE `PongSys` ;
 -- Table `PongSys`.`Equipe`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PongSys`.`Equipe` (
-  `idEquipe` INT NOT NULL,
+  `idEquipe` INT NOT NULL AUTO_INCREMENT,
   `nomeEquipe` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEquipe`))
 ENGINE = InnoDB;

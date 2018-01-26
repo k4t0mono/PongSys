@@ -1,15 +1,7 @@
 <?php
-  require_once('../model/equipe.php');
+  require_once('../model/partida.php');
 
-  class EquipeDAO{
-    function cadastrarEquipe($equipe, $link){
-      $SQL = "INSERT INTO Equipe VALUES (0,'".$equipe->getNome()."');";
-      echo $SQL;
-      if(!mysqli_query($link, $SQL)){
-        die("Nao foi possivel inserir equipe");
-      }
-    }
-
+  class PartidaDAO{
     function buscarEquipe($idEquipe, $link){
       $SQL = "SELECT * FROM Equipe WHERE idEquipe = ".$idEquipe.";";
       $retorno = mysqli_query($link, $SQL);
