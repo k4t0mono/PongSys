@@ -6,9 +6,9 @@
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
+
 	<link rel="stylesheet" href="./style.css" />
 </head>
-
 <body>
 	<nav>
 		<div class="nav-wrapper">
@@ -44,38 +44,14 @@
 		</div>
 	</nav>
 
-	<div class="container center-align">
-		<?php
-			require_once("../persistence/conexao.php");
-			require_once("../persistence/equipeDAO.php");
-      $nome = $_GET["nome"];
+	<div class="card">
 
-      $c = new Conexao();
-			$e = new EquipeDAO();
-			$jogadores = $e->consultarJogadoresDaEquipePorNome($nome,$c->getLink());
-      echo "<h3>".$nome."</h3>";
-			echo "<div class='card'>";
-			echo "<h5>Integrantes</h5>";
-      echo "<table border = '1' class = 'highlight centered'>";
-			echo "<thead><tr><th>"."Nickname"."</th><th>"."Nome"."</th></tr></thead>";
-			echo "<tbody>";
-			if($jogadores != null) {
-				foreach($jogadores as $jogador){
-					echo "<tr>";
-	        echo "<td><a href='visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNickname()."</td>";
-					echo "<td>".$jogador->getNome()."</td>";
-					echo "</tr>";
-				}
-			}
-			echo "</tbody>";
-			echo "</table>";
-			echo "</div>";
-		?>
+
+		<a href="../view/edicaoJogador.php?email=pedro.silveira@compjunior.com">CLica aquiiii	</a>
 	</div>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-	<script type="text/javascript" src="js/tabelas.js"></script>
-
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/tabelas.js"></script>
 </body>
 </html>

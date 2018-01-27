@@ -111,7 +111,7 @@
 				echo "<p>Não há partidas registradas</p>";
 			}
 
-			echo "<a href='./cadastroJogador.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar novo jogador</button></a>";
+			echo "<a href='../view/cadastroPartida.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar nova partida</button></a>";
 
 		?>
 	</div>

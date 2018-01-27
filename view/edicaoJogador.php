@@ -4,9 +4,10 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-	<link rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
-	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
+
+	<link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
@@ -44,34 +45,51 @@
 		</div>
 	</nav>
 
+  <?php
+  require_once ('../model/jogador.php');
+  require_once ('../persistence/jogadorDAO.php');
+  require_once ('../persistence/conexao.php');
+
+  $nick = $_GET["nick"];
+
+  $conexao = new Conexao();
+  $jogadorDAO = new JogadorDAO();
+  $jogador = $jogadorDAO->consultarJogadorPorNick($nick, $conexao->getLink());
+  ?>
 	<div class="container">
 		<div class="row">
 			<div class="col s8 m8 offset-m2">
 				<div class="card blue-grey darken-1">
 					<div class="card-content white-text">
-						<span class="card-title center">Cadastro de Jogador</span>
+						<span class="card-title center">Editar Perfil de Jogador</span>
 					</div>
 
 					<div class="card-content white-text">
-						<form method="post" action="../control/cadastrarJogador.php">
+						<form method="post" action="../control/editarJogador.php">
 							<div class="row margin">
 								<div class="input-field col s12">
-									<input sid="nome" name="nome" type="text" />
+                  <?php
+                    echo "<input id='nome' name='nome' type='text' value='".$jogador->getNome()."' />"
+                  ?>
 									<label for="nome">Nome</label>
 								</div>
 							</div>
 
 							<div class="row margin">
 								<div class="input-field col s12">
-									<input id="email" name="email" type="email" class="validate" />
-									<label for="email">Email</label>
+                  <?php
+                    echo "<input id='email' name='email' type='email' value='".$jogador->getEmail()."' readonly/>"
+                  ?>
+                  <label for="email">Email</label>
 								</div>
 							</div>
 
 							<div class="row margin">
 								<div class="input-field col s6">
-									<input id="nick" name="nick" type="text" />
-									<label for="nick">Nick</label>
+                  <?php
+                    echo "<input id='nick' name='nick' type='text' value='".$jogador->getNickname()."' />"
+                  ?>
+                  <label for="nick">Nick</label>
 								</div>
 
 								<div class="input-field col s6">
@@ -85,10 +103,17 @@
 											$c = new Conexao();
 											$e = new EquipeDAO();
 											$equipes = $e->listarEquipes($c->getLink());
+                      $equipeAntiga = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
 											if($equipes != null) {
 												foreach($equipes as $equipe) {
-													echo "<option value='" . $equipe->getIdEquipe() . "'>";
-													echo $equipe->getNome() . "</option>";
+                          if($equipe->getNome() == $equipeAntiga->getNome()){
+                            echo "<option value='".$equipe->getIdEquipe()."' selected>";
+  													echo $equipe->getNome() . "</option>";
+                          }
+                          else{
+  													echo "<option value='" . $equipe->getIdEquipe() . "'>";
+  													echo $equipe->getNome() . "</option>";
+                          }
 												}
 											}
 										?>
@@ -99,12 +124,16 @@
 
 							<div class="row margin">
 								<div class="input-field col s6">
-									<input id="pass" name="pass" type="password" />
+                  <?php
+                    echo "<input id='pass' name='pass' type='password' value='".$jogador->getSenha()."' />"
+                  ?>
 									<label for="pass">Senha</label>
 								</div>
 
 								<div class="input-field col s6">
-									<input id="pass_confirm" name="pass_confirm" type="password" />
+                  <?php
+                    echo "<input id='pass' name='pass' type='password' value='".$jogador->getSenha()."' />";
+									?>
 									<label for="pass_confirm">Confirmação da Senha</label>
 								</div>
 							</div>

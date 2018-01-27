@@ -9,9 +9,7 @@
 
   $jogadorDAO = new JogadorDAO();
   $jogador = $jogadorDAO->consultarJogadorPorEmail($email, $conexao->getLink());
-  echo $jogador->getSenha();
-  echo $senha;
-  if($jogador->getSenha() == $senha){
+  if($jogador != null && $jogador->getSenha() == $senha){
     session_start();
     $_SESSION["user"] = $email;
     echo "Log in feito com sucesso <br>";

@@ -69,6 +69,29 @@
       }
       return null;
     }
+
+    function editarJogador($jogadorNovo, $link){
+      $SQL = "UPDATE Jogador SET  email='".$jogadorNovo->getEmail()."',
+                                  idEquipe = '".$jogadorNovo->getIdEquipe()."',
+                                  nickname = '".$jogadorNovo->getNickname()."',
+                                  nome = '".$jogadorNovo->getNome()."',
+                                  senha = '".$jogadorNovo->getSenha()."'
+                                  WHERE email = '".$jogadorNovo->getEmail()."';";
+
+      if (!mysqli_query($link, $SQL)) {
+  			die("Erro ao editar jogador");
+  		}
+      return $jogadorNovo->getNickname();
+    }
+
+    function deletarJogador($email, $link){
+      $SQL = "DELETE FROM Jogador WHERE email= '$email';";
+
+      if(!mysqli_query($link, $SQL)){
+        die("erro ao deletar jogador");
+      }
+    }
+
   }
 
 
