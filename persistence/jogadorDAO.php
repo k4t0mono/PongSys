@@ -84,6 +84,14 @@
       return $jogadorNovo->getNickname();
     }
 
+    function deletarJogador($email, $link){
+      $SQL = "DELETE FROM Jogador WHERE email= '$email';";
+
+      if(!mysqli_query($link, $SQL)){
+        die("erro ao deletar jogador");
+      }
+    }
+
   }
 
 

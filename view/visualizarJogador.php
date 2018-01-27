@@ -67,6 +67,7 @@
       echo "</div>";
 
 			echo "<a href='../view/edicaoJogador.php?nick=".$jogador->getNickname()."'><button type='button' class='waves-effect waves-light btn'>Editar Jogador</button></a>";
+			echo "<button type='button' onclick = 'confirmarDelecao()' class='waves-effect waves-light btn'>Apagar Jogador</button>";
 
 		?>
 	</div>
@@ -74,6 +75,15 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/tabelas.js"></script>
+	<script>
+		function confirmarDelecao(){
+			var confirmacao = confirm("Deseja realmente deletar esse jogador? (não pode ser revertido)");
+			if(confirmacao == true){
+				var email = "<?php echo $jogador->getEmail()?>";
+				window.location = "../control/deletarJogador.php?email=" + email;
+			}
+		}
+	</script>
 
 </body>
 </html>
