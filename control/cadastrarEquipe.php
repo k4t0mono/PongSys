@@ -13,5 +13,4 @@
 
   header('Location: ../view/listarEquipes.php');
 
-
 ?>

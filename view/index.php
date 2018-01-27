@@ -73,6 +73,16 @@
 				</div>
 			</a>
 
+			<a href="./cadastroDesempenho.php">
+				<div class="col s8 m8 offset-m2">
+					<div class="card blue-grey darken-1 waves-effect waves-light ">
+						<div class="card-content white-text">
+								<span class="card-title center">Cadastro de Desempenhos</span>
+						</div>
+					</div>
+				</div>
+			</a>
+
 			<a href="../view/listarEquipes.php">
 				<div class="col s8 m8 offset-m2">
 					<div class="card blue-grey darken-1 waves-effect waves-light ">

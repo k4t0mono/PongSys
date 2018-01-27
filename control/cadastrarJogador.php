@@ -18,7 +18,6 @@
 
   $jogadorDAO->cadastrarJogador($jogador, $conexao->getLink());
 
-  echo "<script type='text/javascript'>alert('Jogador cadastrado com sucesso.')</script>";
-  header('Location: ../view/');
+  header('Location: ../view/listarJogadores.php');
 
 ?>

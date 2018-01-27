@@ -6,7 +6,7 @@
     private $mortes;
     private $assistencias;
 
-    function __construct($idJogador,$idPartida,$eliminacoes,$mortes,$assistencias){
+    function __construct($idJogador, $idPartida, $eliminacoes, $mortes, $assistencias){
       $this->idJogador = $idJogador;
       $this->idPartida = $idPartida;
       $this->eliminacoes = $eliminacoes;
@@ -16,13 +16,13 @@
     }
 
     public function getIdJogador(){
-      return $this->IdJogador;
+      return $this->idJogador;
     }
     public function getIdPartida(){
       return $this->idPartida;
     }
     public function getEliminacoes(){
-      return $this->eleminacoes;
+      return $this->eliminacoes;
     }
     public function getMortes(){
       return $this->mortes;
