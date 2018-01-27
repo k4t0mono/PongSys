@@ -93,13 +93,13 @@
 											}
 										?>
 									</select>
-									<label for="eqipe">Equipe</label>
+									<label for="equipe">Equipe</label>
 								</div>
 							</div>
 
 							<div class="row margin">
 								<div class="input-field col s6">
-									<input sid="pass" name="pass" type="password" />
+									<input id="pass" name="pass" type="password" />
 									<label for="pass">Senha</label>
 								</div>
 
