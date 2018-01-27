@@ -6,9 +6,9 @@
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
+
 	<link rel="stylesheet" href="./style.css" />
 </head>
-
 <body>
 	<nav>
 		<div class="nav-wrapper">
@@ -44,36 +44,14 @@
 		</div>
 	</nav>
 
-	<div class="container center-align">
-		<?php
-			require_once("../persistence/conexao.php");
-      require_once("../persistence/equipeDAO.php");
-			require_once("../persistence/jogadorDAO.php");
-      $nick = $_GET["nick"];
+	<div class="card">
 
-      $c = new Conexao();
-			$e = new EquipeDAO();
-      $j = new JogadorDAO();
-			$jogador = $j->consultarJogadorPorNick($nick,$c->getLink());
-      $equipe = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
-      // echo "<div class='col s4'>";
-      echo "<div class='card'>";
-      echo "  <div class='row'>";
-      echo "    <div class='col s6 right-align'><img src='./img/perfil.jpg' class='imagem-perfil'/></div>";
-      echo "    <div class='col s6 left-align'><h3>".$jogador->getNickname()."</h3></div>";
-      echo "  </div>";
-      echo "  <p><b>Nome:</b> ".$jogador->getNome()."</p>";
-      echo "  <p><b>Equipe:</b> <a href='visualizarEquipe.php?nome=".$equipe->getNome()."'>".$equipe->getNome()."</a></p>";
-      echo "</div>";
 
-			echo "<a href='../view/edicaoJogador.php?nick=".$jogador->getNickname()."'><button type='button' class='waves-effect waves-light btn'>Editar Jogador</button></a>";
-
-		?>
+		<a href="../view/edicaoJogador.php?email=pedro.silveira@compjunior.com">CLica aquiiii	</a>
 	</div>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-	<script type="text/javascript" src="js/tabelas.js"></script>
-
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/tabelas.js"></script>
 </body>
 </html>
