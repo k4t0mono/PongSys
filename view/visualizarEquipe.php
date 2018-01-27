@@ -27,8 +27,13 @@
 						$conexao = new Conexao();
 						$jogadorDAO = new JogadorDAO();
 						$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
-						echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
-						echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						if($usuario != null){
+							echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+							echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						}
+						else{
+							echo "<li><a href='login.html'>Login</a></li>";
+						}
 					}
 					else{
 						echo "<li><a href='login.html'>Login</a></li>";
