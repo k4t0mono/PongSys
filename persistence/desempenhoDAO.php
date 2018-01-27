@@ -55,6 +55,23 @@ class DesempenhoDAO {
 		return null;
 	}
 
+	function consultarDesempenhoJogador($email, $link){
+		$SQL = "SELECT * FROM Desempenho WHERE email_jogador = '$email';";
+		$retorno = mysqli_query($link, $SQL);
+		if(!$retorno){
+			die("Erro na consulta de desempenho");
+		}
+		if(mysqli_num_rows($retorno) > 0){
+			$resultado = array();
+			$ret = $retorno->fetch_all();
+			foreach($ret as $linha){
+				$resultado[] = new Desempenho($linha[1],$linha[0],$linha[2],$linha[3],$linha[4]);
+			}
+			return $resultado;
+		}
+		return null;
+	}
+
 }
 
 ?>

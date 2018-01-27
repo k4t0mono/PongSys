@@ -1,13 +1,13 @@
 <?php
   class Desempenho{
-    private $idJogador;
+    private $email;
     private $idPartida;
     private $eliminacoes;
     private $mortes;
     private $assistencias;
 
-    function __construct($idJogador, $idPartida, $eliminacoes, $mortes, $assistencias){
-      $this->idJogador = $idJogador;
+    function __construct($email, $idPartida, $eliminacoes, $mortes, $assistencias){
+      $this->email = $email;
       $this->idPartida = $idPartida;
       $this->eliminacoes = $eliminacoes;
       $this->mortes = $mortes;
@@ -16,7 +16,7 @@
     }
 
     public function getIdJogador(){
-      return $this->idJogador;
+      return $this->email;
     }
     public function getIdPartida(){
       return $this->idPartida;

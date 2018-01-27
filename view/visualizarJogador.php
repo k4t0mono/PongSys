@@ -49,13 +49,28 @@
 			require_once("../persistence/conexao.php");
       require_once("../persistence/equipeDAO.php");
 			require_once("../persistence/jogadorDAO.php");
-      $nick = $_GET["nick"];
+			require_once("../persistence/desempenhoDAO.php");
+			require_once("../persistence/partidaDAO.php");
+
+			$nick = $_GET["nick"];
 
       $c = new Conexao();
+
+			$j = new JogadorDAO();
 			$e = new EquipeDAO();
-      $j = new JogadorDAO();
+			$p = new PartidaDAO();
+			$d = new DesempenhoDAO();
+
 			$jogador = $j->consultarJogadorPorNick($nick,$c->getLink());
       $equipe = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
+			$desempenhos = $d->consultarDesempenhoJogador($jogador->getEmail(), $c->getLink());
+			$partidas = array();
+			if($desempenhos != null){
+				foreach($desempenhos as $desempenho){
+					$partidas[] = $p->consultarPartidaPorId($desempenho->getIdPartida(), $c->getLink());
+				}
+			}
+
       // echo "<div class='col s4'>";
       echo "<div class='card'>";
       echo "  <div class='row'>";
@@ -64,7 +79,35 @@
       echo "  </div>";
       echo "  <p><b>Nome:</b> ".$jogador->getNome()."</p>";
       echo "  <p><b>Equipe:</b> <a href='visualizarEquipe.php?nome=".$equipe->getNome()."'>".$equipe->getNome()."</a></p>";
-      echo "</div>";
+
+
+			echo "<div class='card'>";
+			echo "<h5>Desempenho</h5>";
+      echo "<table border = '1' class = 'highlight centered'>";
+			echo "<thead><tr><th>"."Partida"."</th><th>"."Data"."</th><th>"."Eliminações"."</th><th>"."Mortes"."</th><th>"."Assistências"."</th></tr></thead>";
+			echo "<tbody>";
+			if($desempenhos != null) {
+				for($i = 0; $i < count($partidas); $i++){
+					echo "<tr>";
+
+					if($partidas[$i] != null){
+						$equipe1 = $e->buscarEquipe($partidas[$i]->getEquipe1(), $c->getLink());
+						$equipe2 = $e->buscarEquipe($partidas[$i]->getEquipe2(), $c->getLink());
+						echo "<td><a href=''></a>".$equipe1->getNome()." x ".$equipe2->getNome()."</td>";
+						echo "<td>".$partidas[$i]->getData()."</td>";
+					}
+					echo "<td>".$desempenhos[$i]->getEliminacoes()."</td>";
+					echo "<td>".$desempenhos[$i]->getMortes()."</td>";
+					echo "<td>".$desempenhos[$i]->getAssistencias()."</td>";
+					echo "</tr>";
+				}
+			}
+			echo "</tbody>";
+			echo "</table>";
+			echo "</div>";
+
+
+			echo "</div>";
 
 			echo "<a href='../view/edicaoJogador.php?nick=".$jogador->getNickname()."'><button type='button' class='waves-effect waves-light btn'>Editar Jogador</button></a>";
 			echo "<button type='button' onclick = 'confirmarDelecao()' class='waves-effect waves-light btn'>Apagar Jogador</button>";

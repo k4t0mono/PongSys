@@ -40,5 +40,6 @@
     public function getResultado(){
       return $this->resultado;
     }
+
   }
 ?>
