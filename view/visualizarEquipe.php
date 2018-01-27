@@ -54,11 +54,13 @@
       echo "<table border = '1' class = 'highlight centered'>";
 			echo "<thead><tr><th>"."Nickname"."</th><th>"."Nome"."</th></tr></thead>";
 			echo "<tbody>";
-			foreach($jogadores as $jogador){
-				echo "<tr>";
-        echo "<td><a href='visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNickname()."</td>";
-				echo "<td>".$jogador->getNome()."</td>";
-				echo "</tr>";
+			if($jogadores != null) {
+				foreach($jogadores as $jogador){
+					echo "<tr>";
+	        echo "<td><a href='visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNickname()."</td>";
+					echo "<td>".$jogador->getNome()."</td>";
+					echo "</tr>";
+				}
 			}
 			echo "</tbody>";
 			echo "</table>";

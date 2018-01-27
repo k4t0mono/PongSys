@@ -5,7 +5,7 @@
 
   $nomeEquipe = $_POST["nome"];
 
-  $equipe = new Equipe($nomeEquipe);
+  $equipe = new Equipe($nomeEquipe, null);
   $conexao = new Conexao();
 
   $equipeDAO = new EquipeDAO();
