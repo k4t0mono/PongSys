@@ -52,7 +52,22 @@
     }
 
     function consultarPartidaPorId($id, $link) {
+      $SQL = "SELECT * FROM Partida WHERE idPartida=".$id.";";
 
+      $retorno = mysqli_query($link, $SQL);
+      if(!$retorno) {
+        die("Erro na consulta de partidas");
+      }
+
+      if(mysqli_num_rows($retorno) > 0) {
+        $ret = $retorno->fetch_all();
+        foreach($ret as $l) {
+          $partida = new Partida($l[1], $l[2], $l[3], $l[4], $l[5], $l[0]);
+          return $partida;
+        }
+      }
+
+      return null;
     }
 
   }

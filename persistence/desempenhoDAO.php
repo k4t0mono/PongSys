@@ -15,6 +15,46 @@ class DesempenhoDAO {
 		}
 	}
 
+	function consultarDesempenhosPorIDPartida($id, $link) {
+		$SQL = "SELECT * FROM Desempenho WHERE idPartida=".$id.";";
+
+		$retorno = mysqli_query($link, $SQL);
+		if(!$retorno) {
+			die("Erro na consulta de Desempenho");
+		}
+
+		if(mysqli_num_rows($retorno) > 0) {
+			$ret = $retorno->fetch_all();
+			$desempenho = array();
+			foreach($ret as $l) {
+				$desempenho[] = new Desempenho($l[1], $l[0], $l[2], $l[3], $l[4]);
+			}
+			return $desempenho;
+		}
+		return null;
+	}
+
+	function consultarDesempenhosPorIDPartidaDaEquipe($id, $equipeID, $link) {
+		$SQL = "SELECT D.idPartida, D.email_jogador, D.eliminações, D.mortes, D.assistencias
+						FROM Jogador as J, Desempenho as D WHERE J.idEquipe=".$equipeID." and
+						D.email_jogador = J.email;";
+
+		$retorno = mysqli_query($link, $SQL);
+		if(!$retorno) {
+			die("Erro na consulta de Desempenho");
+		}
+
+		if(mysqli_num_rows($retorno) > 0) {
+			$ret = $retorno->fetch_all();
+			$desempenho = array();
+			foreach($ret as $l) {
+				$desempenho[] = new Desempenho($l[1], $l[0], $l[2], $l[3], $l[4]);
+			}
+			return $desempenho;
+		}
+		return null;
+	}
+
 }
 
 ?>
