@@ -42,6 +42,16 @@
 	</nav>
 
 	<div class="container center-align">
+		<a href="./cadastroEquipe.php">
+			<div class="col s8 m8 offset-m2">
+				<div class="card blue-grey darken-1 waves-effect waves-light ">
+					<div class="card-content white-text">
+						<span class="card-title center">Cadastro de Equipes</span>
+					</div>
+				</div>
+			</div>
+		</a>
+
 		<a href="./cadastroJogador.php">
 			<div class="row">
 				<div class="col s8 m8 offset-m2">
@@ -53,16 +63,25 @@
 				</div>
 			</a>
 
-			<a href="./cadastroEquipe.php">
+			<a href="./cadastroPartida.php">
 				<div class="col s8 m8 offset-m2">
 					<div class="card blue-grey darken-1 waves-effect waves-light ">
 						<div class="card-content white-text">
-								<span class="card-title center">Cadastro de Equipes</span>
+								<span class="card-title center">Cadastro de Partidas</span>
 						</div>
 					</div>
 				</div>
 			</a>
 
+			<a href="../view/listarEquipes.php">
+				<div class="col s8 m8 offset-m2">
+					<div class="card blue-grey darken-1 waves-effect waves-light ">
+						<div class="card-content white-text">
+							<span class="card-title center">Listar Equipes</span>
+						</div>
+					</div>
+				</div>
+			</a>
 
 			<a href="../view/listarJogadores.php">
 				<div class="col s8 m8 offset-m2">
@@ -74,11 +93,11 @@
 				</div>
 			</a>
 
-			<a href="../view/listarEquipes.php">
+			<a href="../view/listarPartidas.php">
 				<div class="col s8 m8 offset-m2">
 					<div class="card blue-grey darken-1 waves-effect waves-light ">
 						<div class="card-content white-text">
-								<span class="card-title center">Listar Equipes</span>
+								<span class="card-title center">Listar Partidas</span>
 						</div>
 					</div>
 				</div>

@@ -9,7 +9,7 @@
     private $estado;
     private $resultado;
 
-    function __construct($idPartida,$equipe1,$equipe2,$data,$estado,$resultado){
+    function __construct($equipe1, $equipe2, $data, $estado, $resultado, $idPartida){
       $this->idPartida = $idPartida;
       $this->equipe1 = $equipe1;
       $this->equipe2 = $equipe2;
