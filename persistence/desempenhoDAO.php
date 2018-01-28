@@ -78,11 +78,23 @@ class DesempenhoDAO {
 		if(!$retorno){
 			die("Erro na consulta de desempenho");
 		}
+<<<<<<< current
 		if(mysqli_num_rows($retorno) > 0){
 			$ret = $retorno->fetch_all();
 			foreach($ret as $linha){
 				return $linha[0];
 			}
+=======
+		echo $SQL;
+		echo "<br />";
+		if(mysqli_num_rows($retorno) > 0){
+			$ret = $retorno->fetch_all();
+			$resultado = 0;
+			foreach($ret as $linha){
+				echo $linha[0];
+			}
+			return $resultado;
+>>>>>>> before discard
 		}
 		return null;
 	}

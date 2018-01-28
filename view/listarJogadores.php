@@ -24,20 +24,28 @@
 					require_once("../persistence/jogadorDAO.php");
 					require_once("../persistence/conexao.php");
 					session_start();
-					if(array_key_exists('user',$_SESSION)){
-						$conexao = new Conexao();
-						$jogadorDAO = new JogadorDAO();
-						$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
-						if($usuario != null){
-							echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+					if(array_key_exists('adm',$_SESSION)){
+						if($_SESSION["adm"] != null){
+							echo "<li><a>Bem-vindo, Organizador</a></li>";
 							echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						}
+					}
+					else{
+						if(array_key_exists('user',$_SESSION)){
+							$conexao = new Conexao();
+							$jogadorDAO = new JogadorDAO();
+							$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
+							if($usuario != null){
+								echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+								echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+							}
+							else{
+								echo "<li><a href='login.html'>Login</a></li>";
+							}
 						}
 						else{
 							echo "<li><a href='login.html'>Login</a></li>";
 						}
-					}
-					else{
-						echo "<li><a href='login.html'>Login</a></li>";
 					}
 				?>
 
@@ -80,8 +88,11 @@
 			else{
 				echo "<p>Não há jogadores registrados</p>";
 			}
-			echo "<a href='./cadastroJogador.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar novo jogador</button></a>";
-
+			if(array_key_exists('adm',$_SESSION)){
+				if($_SESSION["adm"] == true){
+					echo "<a href='./cadastroJogador.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar novo jogador</button></a>";
+				}
+			}
 		?>
 	</div>
 

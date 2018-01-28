@@ -23,20 +23,28 @@
 					require_once("../persistence/jogadorDAO.php");
 					require_once("../persistence/conexao.php");
 					session_start();
-					if(array_key_exists('user',$_SESSION)){
-						$conexao = new Conexao();
-						$jogadorDAO = new JogadorDAO();
-						$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
-						if($usuario != null){
-							echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+					if(array_key_exists('adm',$_SESSION)){
+						if($_SESSION["adm"] != null){
+							echo "<li><a>Bem-vindo, Organizador</a></li>";
 							echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						}
+					}
+					else{
+						if(array_key_exists('user',$_SESSION)){
+							$conexao = new Conexao();
+							$jogadorDAO = new JogadorDAO();
+							$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
+							if($usuario != null){
+								echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+								echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+							}
+							else{
+								echo "<li><a href='login.html'>Login</a></li>";
+							}
 						}
 						else{
 							echo "<li><a href='login.html'>Login</a></li>";
 						}
-					}
-					else{
-						echo "<li><a href='login.html'>Login</a></li>";
 					}
 				?>
 
@@ -120,6 +128,18 @@
 							</tbody>
 						</table>
 					</div>
+
+					<?php
+						if(array_key_exists('adm',$_SESSION)){
+							if($_SESSION["adm"] == true){
+								echo "<div>";
+								echo "<a href='../view/edicaoJogador.php?nick=<?php echo $jogador->getNickname(); ?>'>";
+								echo "<button type='button' class='waves-effect waves-light btn'>Editar Jogador</button></a>";
+								echo "<button type='button' onclick = 'confirmarDelecao()' class='waves-effect waves-light btn'>Apagar Jogador</button>";
+								echo "</div>";
+							}
+						}
+					?>
 					<div>
 						<a href='../view/edicaoJogador.php?nick=<?php echo $jogador->getNickname(); ?>'>
 							<button type='button' class='waves-effect waves-light btn'>Editar Jogador</button>
