@@ -20,20 +20,28 @@
 					require_once("../persistence/jogadorDAO.php");
 					require_once("../persistence/conexao.php");
 					session_start();
-					if(array_key_exists('user',$_SESSION)){
-						$conexao = new Conexao();
-						$jogadorDAO = new JogadorDAO();
-						$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
-						if($usuario != null){
-							echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+					if(array_key_exists('adm',$_SESSION)){
+						if($_SESSION["adm"] != null){
+							echo "<li><a>Bem-vindo, Organizador</a></li>";
 							echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+						}
+					}
+					else{
+						if(array_key_exists('user',$_SESSION)){
+							$conexao = new Conexao();
+							$jogadorDAO = new JogadorDAO();
+							$usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
+							if($usuario != null){
+								echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+								echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
+							}
+							else{
+								echo "<li><a href='login.html'>Login</a></li>";
+							}
 						}
 						else{
 							echo "<li><a href='login.html'>Login</a></li>";
 						}
-					}
-					else{
-						echo "<li><a href='login.html'>Login</a></li>";
 					}
 				?>
 
@@ -42,46 +50,53 @@
 	</nav>
 
 	<div class="container center-align">
-		<a href="./cadastroEquipe.php">
-			<div class="col s8 m8 offset-m2">
-				<div class="card blue-grey darken-1 waves-effect waves-light ">
-					<div class="card-content white-text">
-						<span class="card-title center">Cadastro de Equipes</span>
-					</div>
-				</div>
-			</div>
-		</a>
+		<?php
+		if(array_key_exists('adm',$_SESSION)){
 
-		<a href="./cadastroJogador.php">
-			<div class="row">
-				<div class="col s8 m8 offset-m2">
-					<div class="card blue-grey darken-1 waves-effect waves-light ">
-						<div class="card-content white-text">
-							<span class="card-title center">Cadastro de Jogadores</span>
-						</div>
-					</div>
-				</div>
-			</a>
+			if($_SESSION["adm"] == true){
+			echo "<a href='./cadastroEquipe.php'>";
+			echo "	<div class='col s8 m8 offset-m2'>";
+			echo "		<div class='card blue-grey darken-1 waves-effect waves-light '>";
+			echo "			<div class='card-content white-text'>";
+			echo "				<span class='card-title center'>Cadastro de Equipes</span>";
+			echo "			</div>";
+			echo "		</div>";
+			echo "	</div>";
+			echo "</a>";
 
-			<a href="./cadastroPartida.php">
-				<div class="col s8 m8 offset-m2">
-					<div class="card blue-grey darken-1 waves-effect waves-light ">
-						<div class="card-content white-text">
-								<span class="card-title center">Cadastro de Partidas</span>
-						</div>
-					</div>
-				</div>
-			</a>
+			echo "<a href='./cadastroJogador.php'>";
+			echo "	<div class='row'>";
+			echo "		<div class='col s8 m8 offset-m2'>";
+			echo "			<div class='card blue-grey darken-1 waves-effect waves-light '>";
+			echo "				<div class='card-content white-text'>";
+			echo "					<span class='card-title center'>Cadastro de Jogadores</span>";
+			echo "				</div>";
+			echo "			</div>";
+			echo "		</div>";
+			echo "	</a>";
 
-			<a href="./cadastroDesempenho.php">
-				<div class="col s8 m8 offset-m2">
-					<div class="card blue-grey darken-1 waves-effect waves-light ">
-						<div class="card-content white-text">
-								<span class="card-title center">Cadastro de Desempenhos</span>
-						</div>
-					</div>
-				</div>
-			</a>
+				echo "<a href='./cadastroPartida.php'>";
+				echo "	<div class='col s8 m8 offset-m2'>";
+				echo "		<div class='card blue-grey darken-1 waves-effect waves-light '>";
+				echo "			<div class='card-content white-text'>";
+				echo "					<span class='card-title center'>Cadastro de Partidas</span>";
+				echo "			</div>";
+				echo "		</div>";
+				echo "	</div>";
+				echo "</a>";
+
+				echo "<a href='./cadastroDesempenho.php'>";
+				echo "	<div class='col s8 m8 offset-m2'>";
+				echo "		<div class='card blue-grey darken-1 waves-effect waves-light '>";
+				echo "			<div class='card-content white-text'>";
+				echo "					<span class='card-title center'>Cadastro de Desempenhos</span>";
+				echo "			</div>";
+				echo "		</div>";
+				echo "	</div>";
+				echo "</a>";
+			}
+		}
+			?>
 
 			<a href="../view/listarEquipes.php">
 				<div class="col s8 m8 offset-m2">

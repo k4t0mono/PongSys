@@ -75,8 +75,11 @@
 			else{
 				echo "<p>Não há jogadores registrados</p>";
 			}
-			echo "<a href='./cadastroJogador.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar novo jogador</button></a>";
-
+			if(array_key_exists('adm',$_SESSION)){
+				if($_SESSION["adm"] == true){
+					echo "<a href='./cadastroJogador.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar novo jogador</button></a>";
+				}
+			}
 		?>
 	</div>
 

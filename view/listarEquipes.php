@@ -70,7 +70,11 @@
 			else{
 				echo "<p>Não há equipes registradas.</p>";
 			}
+			if(array_key_exists('adm',$_SESSION)){
+				if($_SESSION["adm"] == true){
 			echo "<a href='cadastroEquipe.php'><button type='button' class='waves-effect waves-light btn'>Cadastrar nova equipe</button></a>";
+			}
+		}
 		?>
 	</div>
 

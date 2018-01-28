@@ -108,10 +108,12 @@
 
 
 			echo "</div>";
-
-			echo "<a href='../view/edicaoJogador.php?nick=".$jogador->getNickname()."'><button type='button' class='waves-effect waves-light btn'>Editar Jogador</button></a>";
-			echo "<button type='button' onclick = 'confirmarDelecao()' class='waves-effect waves-light btn'>Apagar Jogador</button>";
-
+			if(array_key_exists('adm',$_SESSION)){
+				if($_SESSION["adm"] == true){
+					echo "<a href='../view/edicaoJogador.php?nick=".$jogador->getNickname()."'><button type='button' class='waves-effect waves-light btn'>Editar Jogador</button></a>";
+					echo "<button type='button' onclick = 'confirmarDelecao()' class='waves-effect waves-light btn'>Apagar Jogador</button>";
+				}
+			}
 		?>
 	</div>
 
