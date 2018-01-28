@@ -51,21 +51,26 @@
       require_once("../persistence/jogadorDAO.php");
 			require_once("../persistence/conexao.php");
 			require_once("../persistence/equipeDAO.php");
+			require_once("../persistence/desempenhoDAO.php");
       $c = new Conexao();
 			$j = new JogadorDAO();
 			$e = new EquipeDAO();
+			$d = new DesempenhoDAO();
 			$jogadores = $j->listarJogadores($c->getLink());
 			if($jogadores != null){
 				echo "<div class='card z-depth-5'>";
 				echo "<table border = '1' class = 'highlight centered'>";
-				echo "<thead><tr><th>"."Nome"."</th><th>"."Nickname"."</th><th>"."Equipe"."</th></tr></thead>";
+				echo "<thead><tr> <th>Nickname</th> <th>Equipe</th> <th>Partida Jogadas</th> </tr></thead>";
 				echo "<tbody>";
 				foreach($jogadores as $jogador){
 					echo "<tr>";
-					echo "<td><a href = '../view/visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNome()."</td>";
-					echo "<td>".$jogador->getNickname()."</td>";
+					echo "<td><a href = '../view/visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNickname()."</td>";
 					$equipe = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
 					echo "<td>".$equipe->getNome()."</td>";
+
+					$partidas = $d->contarDesempenhoJogador($jogador->getEmail(), $c->getLink());
+					echo "<td>".$partidas."</td>";
+
 					echo "</tr>";
 				}
 				echo "</tbody>";

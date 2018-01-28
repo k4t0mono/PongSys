@@ -72,6 +72,21 @@ class DesempenhoDAO {
 		return null;
 	}
 
+	function contarDesempenhoJogador($email, $link){
+		$SQL = "SELECT count(*) FROM Desempenho WHERE email_jogador = '$email';";
+		$retorno = mysqli_query($link, $SQL);
+		if(!$retorno){
+			die("Erro na consulta de desempenho");
+		}
+		if(mysqli_num_rows($retorno) > 0){
+			$ret = $retorno->fetch_all();
+			foreach($ret as $linha){
+				return $linha[0];
+			}
+		}
+		return null;
+	}
+
 }
 
 ?>
