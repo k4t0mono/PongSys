@@ -68,7 +68,7 @@
 
 	?>
 	<div class="container center-align">
-		<div class="card">
+		<div class="card z-depth-5">
 			<div class="card-content">
 				<span class="card-title">
 					<?php echo $partida->getData()." - ".$e1->getNome()." x ".$e2->getNome() ?>

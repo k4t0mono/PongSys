@@ -54,7 +54,7 @@
 			$e = new EquipeDAO();
 			$jogadores = $e->consultarJogadoresDaEquipePorNome($nome,$c->getLink());
       echo "<h3>".$nome."</h3>";
-			echo "<div class='card'>";
+			echo "<div class='card z-depth-5'>";
 			echo "<h5>Integrantes</h5>";
       echo "<table border = '1' class = 'highlight centered'>";
 			echo "<thead><tr><th>"."Nickname"."</th><th>"."Nome"."</th></tr></thead>";
