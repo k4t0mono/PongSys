@@ -51,33 +51,47 @@
 		</div>
 	</nav>
 
-	<div class="container center-align">
-		<?php
-			require_once("../persistence/conexao.php");
-			require_once("../persistence/equipeDAO.php");
-      $nome = $_GET["nome"];
+	<?php
+		require_once("../persistence/conexao.php");
+		require_once("../persistence/equipeDAO.php");
+		$nome = $_GET["nome"];
 
-      $c = new Conexao();
-			$e = new EquipeDAO();
-			$jogadores = $e->consultarJogadoresDaEquipePorNome($nome,$c->getLink());
-      echo "<h3>".$nome."</h3>";
-			echo "<div class='card z-depth-5'>";
-			echo "<h5>Integrantes</h5>";
-      echo "<table border = '1' class = 'highlight centered'>";
-			echo "<thead><tr><th>"."Nickname"."</th><th>"."Nome"."</th></tr></thead>";
-			echo "<tbody>";
-			if($jogadores != null) {
-				foreach($jogadores as $jogador){
-					echo "<tr>";
-	        echo "<td><a href='visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNickname()."</td>";
-					echo "<td>".$jogador->getNome()."</td>";
-					echo "</tr>";
-				}
-			}
-			echo "</tbody>";
-			echo "</table>";
-			echo "</div>";
-		?>
+		$c = new Conexao();
+		$e = new EquipeDAO();
+		$jogadores = $e->consultarJogadoresDaEquipePorNome($nome,$c->getLink());
+	?>
+	<div class="container center-align">
+		<div class="row">
+			<div class="col s12 m8 m2 offset-m2">
+				<div class="card z-depth-5">
+					<div class="card-content">
+						<h4><?php echo $nome; ?></h4>
+						<!-- <p>Partidas Totais: </p> -->
+						<hr />
+
+						<h5>Integrantes</h5>
+						<table border='1' class='highlight centered responsive-table'>
+							<thead>
+								<th>Nickname</th>
+								<th>Partidas</th>
+							</thead>
+							<tbody>
+								<?php
+									if($jogadores != null) {
+										foreach($jogadores as $jogador){
+											echo "<tr>";
+											echo "<td><a href='visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNickname()."</td>";
+											echo "<td>".$jogador->getNome()."</td>";
+											echo "</tr>";
+										}
+									}
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 '	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
