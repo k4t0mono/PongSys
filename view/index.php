@@ -133,5 +133,31 @@
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<?php
+		$fezLogin = null;
+		if(array_key_exists("login", $_GET)){
+			$fezLogin = true;
+		} else{
+			$fezLogin = false;
+		}
+
+		$fezLogoff = null;
+		if(array_key_exists("logoff", $_GET)){
+			$fezLogoff = true;
+		} else{
+			$fezLogoff = false;
+		}
+
+	?>
+	<script>
+		var fezLogin = "<?php echo $fezLogin ?>";
+		var fezLogoff =	"<?php echo $fezLogoff ?>";
+		if(fezLogin){
+			Materialize.toast("Login realizado com sucesso!", 4000);
+		}
+		if(fezLogoff){
+			Materialize.toast("Logoff realizado com sucesso!", 4000);
+		}
+	</script>
 </body>
 </html>
