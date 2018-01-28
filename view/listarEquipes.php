@@ -54,8 +54,8 @@
 			$e = new EquipeDAO();
 			$equipes = $e->listarEquipes($c->getLink());
 			if($equipes != null){
-				echo "<div class='card'>";
-				echo "<table border = '1' class = 'highlight centered'>";
+				echo "<div class='card z-depth-5'>";
+				echo "<table border = '1' class = 'highlight centered responsive-table bordered'>";
 				echo "<thead><tr><th>"."Nome"."</th></tr></thead>";
 				echo "<tbody>";
 				foreach($equipes as $equipe){

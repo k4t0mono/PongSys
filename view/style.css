@@ -33,3 +33,7 @@ body{
 .container{
 	margin-top: 1.5em;
 }
+
+.nav-wrapper {
+	background-color: #00838f;
+}

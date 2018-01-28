@@ -56,7 +56,7 @@
 			$e = new EquipeDAO();
 			$jogadores = $j->listarJogadores($c->getLink());
 			if($jogadores != null){
-				echo "<div class='card'>";
+				echo "<div class='card z-depth-5'>";
 				echo "<table border = '1' class = 'highlight centered'>";
 				echo "<thead><tr><th>"."Nome"."</th><th>"."Nickname"."</th><th>"."Equipe"."</th></tr></thead>";
 				echo "<tbody>";

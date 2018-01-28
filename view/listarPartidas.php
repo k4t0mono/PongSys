@@ -58,8 +58,8 @@
 
 			$partidas = $p->listarPartidas($c->getLink());
 			if($partidas != null) {
-				echo "<div class='card'>";
-				echo "<table border='1' class='highlight centered'>";
+				echo "<div class='card z-depth-5'>";
+				echo "<table border='1' class='highlight centered responsive-table bordered'>";
 				echo "<thead><tr> <th>Id</th> <th>Equipe 1</th> <th>Equipe 2</th> <th>Data</th> <th>Estado</th> <th>Vencedores</th> </tr></thead>";
 				echo "<tbody>";
 
