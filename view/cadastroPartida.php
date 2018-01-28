@@ -64,7 +64,7 @@
 						<form method="post" action="../control/cadastrarPartida.php">
 							<div class="row margin">
 								<div class="input-field col s6">
-									<select id="equipe1" name="equipe1">
+									<select id="equipe1" name="equipe1" required>
 										<option value="" disabled="true" selected="true">Selecione uma equipe</option>
 										<?php
 											require_once("../persistence/conexao.php");
@@ -85,7 +85,7 @@
 								</div>
 
 								<div class="input-field col s6">
-									<select id="equipe2" name="equipe2">
+									<select id="equipe2" name="equipe2" required>
 										<option value="" disabled="true" selected="true">Selecione uma equipe</option>
 										<?php
 											require_once("../persistence/conexao.php");
@@ -108,19 +108,19 @@
 
 							<div class="row margin">
 								<div class="input-field col s6">
-									<input type="text" class="datepicker" name="data" />
+									<input type="text" class="datepicker" name="data" required/>
 									<label for="data">Data</label>
 								</div>
 
 								<div class="input-field col s6">
-									<input type="text" class="timepicker" name="horario" />
+									<input type="text" class="timepicker" name="horario" required/>
 									<label for="horario">Horário</label>
 								</div>
 							</div>
 
 							<div class="row margin">
 								<div class="input-field col s6">
-									<select id="estado" name="estado">
+									<select id="estado" name="estado" required>
 										<option value="" disabled="true" selected="true">Selecione uma equipe</option>
 										<option value="0">Não realizada</option>
 										<option value="1">Em andamento</option>
@@ -131,7 +131,7 @@
 
 								<div class="input-field col s6">
 									<select id="ganhador" name="ganhador">
-										<option value="" disabled="true" selected="true">Selecione uma equipe</option>
+										<option value="null" selected="true">Selecione uma equipe</option>
 										<?php
 											require_once("../persistence/conexao.php");
 											require_once("../persistence/equipeDAO.php");

@@ -77,7 +77,7 @@
 							<div class="row margin">
 								<div class="input-field col s12">
                   <?php
-                    echo "<input id='nome' name='nome' type='text' value='".$jogador->getNome()."' />"
+                    echo "<input id='nome' name='nome' type='text' value='".$jogador->getNome()."' required/>"
                   ?>
 									<label for="nome">Nome</label>
 								</div>
@@ -95,14 +95,14 @@
 							<div class="row margin">
 								<div class="input-field col s6">
                   <?php
-                    echo "<input id='nick' name='nick' type='text' value='".$jogador->getNickname()."' />"
+                    echo "<input id='nick' name='nick' type='text' value='".$jogador->getNickname()."' required/>"
                   ?>
                   <label for="nick">Nick</label>
 								</div>
 
 								<div class="input-field col s6">
 									<!-- <input id="equipe" name="equipe" type="text" /> -->
-									<select id="equipe" name="equipe">
+									<select id="equipe" name="equipe" required>
 										<option value="" disabled="true" selected="true">Selecione uma equipe</option>
 										<?php
 											require_once("../persistence/conexao.php");
@@ -133,14 +133,14 @@
 							<div class="row margin">
 								<div class="input-field col s6">
                   <?php
-                    echo "<input id='pass' name='pass' type='password' value='".$jogador->getSenha()."' />"
+                    echo "<input id='pass' name='pass' type='password' value='".$jogador->getSenha()."' required/>"
                   ?>
 									<label for="pass">Senha</label>
 								</div>
 
 								<div class="input-field col s6">
                   <?php
-                    echo "<input id='pass' name='pass' type='password' value='".$jogador->getSenha()."' />";
+                    echo "<input id='pass' name='pass' type='password' value='".$jogador->getSenha()."' required/>";
 									?>
 									<label for="pass_confirm">Confirmação da Senha</label>
 								</div>

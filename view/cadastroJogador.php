@@ -64,27 +64,27 @@
 						<form method="post" action="../control/cadastrarJogador.php">
 							<div class="row margin">
 								<div class="input-field col s12">
-									<input sid="nome" name="nome" type="text" />
+									<input sid="nome" name="nome" type="text" required/>
 									<label for="nome">Nome</label>
 								</div>
 							</div>
 
 							<div class="row margin">
 								<div class="input-field col s12">
-									<input id="email" name="email" type="email" class="validate" />
+									<input id="email" name="email" type="email" class="validate" required/>
 									<label for="email">Email</label>
 								</div>
 							</div>
 
 							<div class="row margin">
 								<div class="input-field col s6">
-									<input id="nick" name="nick" type="text" />
+									<input id="nick" name="nick" type="text" required/>
 									<label for="nick">Nick</label>
 								</div>
 
 								<div class="input-field col s6">
 									<!-- <input id="equipe" name="equipe" type="text" /> -->
-									<select id="equipe" name="equipe">
+									<select id="equipe" name="equipe" required>
 										<option value="" disabled="true" selected="true">Selecione uma equipe</option>
 										<?php
 											require_once("../persistence/conexao.php");
@@ -107,12 +107,12 @@
 
 							<div class="row margin">
 								<div class="input-field col s6">
-									<input id="pass" name="pass" type="password" />
+									<input id="pass" name="pass" type="password" required/>
 									<label for="pass">Senha</label>
 								</div>
 
 								<div class="input-field col s6">
-									<input id="pass_confirm" name="pass_confirm" type="password" />
+									<input id="pass_confirm" name="pass_confirm" type="password" required/>
 									<label for="pass_confirm">Confirmação da Senha</label>
 								</div>
 							</div>

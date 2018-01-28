@@ -63,7 +63,7 @@
 						<form method="post" action="../control/cadastrarDesempenho.php">
 							<div class="row margin">
 								<div class="input-field col m6">
-									<select id="jogador" name="jogador">
+									<select id="jogador" name="jogador" required>
 										<option value="" disabled="true" selected="true">Selecione um jogador</option>
 										<?php
 											require_once("../persistence/conexao.php");
@@ -92,7 +92,7 @@
 
 							<div class="row margin">
 								<div class="input-field col m12">
-									<select id="partida" name="partida">
+									<select id="partida" name="partida" required>
 										<option value="" disabled="true" selected="true">Selecione uma partida</option>
 										<?php
 											require_once("../persistence/partidaDAO.php");
@@ -121,17 +121,17 @@
 
 							<div class="row margin">
 								<div class="input-field col m4">
-									<input name="k" id="k" type="number" min="0" value="0" />
+									<input name="k" id="k" type="number" min="0" value="0" required/>
 									<label for="k">Eliminações</label>
 								</div>
 
 								<div class="input-field col m4">
-									<input name="d" id="d" type="number" min="0" value="0" />
+									<input name="d" id="d" type="number" min="0" value="0" required/>
 									<label for="d">Mortes</label>
 								</div>
 
 								<div class="input-field col m4">
-									<input name="a" id="a" type="number" min="0" value="0" />
+									<input name="a" id="a" type="number" min="0" value="0" required/>
 									<label for="a">Assistências</label>
 								</div>
 							</div>

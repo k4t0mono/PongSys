@@ -63,7 +63,7 @@
 						<form method="post" action="../control/cadastrarEquipe.php">
 							<div class="row margin">
 								<div class="input-field col s12">
-									<input id="nome" type="text" name="nome"/>
+									<input id="nome" type="text" name="nome" required/>
 									<label for="nome">Nome</label>
 								</div>
 							</div>
