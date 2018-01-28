@@ -4,10 +4,26 @@
 	<meta charset="utf-8" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
+	<link rel="stylesheet" href="./style.css" />
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 
 <body>
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">PongSys</a>
+
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="../view">Home</a></li>
+				<li><a href="../view/listarJogadores.php">Jogadores</a></li>
+				<li><a href="../view/listarEquipes.php">Equipes</a></li>
+				<li><a href="../view/listarPartidas.php">Partidas</a></li>
+
+			</ul>
+		</div>
+	</nav>
 
 	<div class="container">
 		<div class="row">
@@ -42,8 +58,12 @@
 						</div>
 					</div>
 					<div class="center-align">
-						<button type="submit" class="waves-effect waves-light btn">Submit</button>
+						<button type="submit" class="waves-effect waves-light btn">Enviar</button>
 					</div>
+					<div class="center-align">
+						<a href="../view/cadastroJogador.php">Não possui conta? Clique e registre-se</a>
+					</div>
+
 				</form>
 			</div>
 		</div>
