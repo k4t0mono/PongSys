@@ -19,7 +19,7 @@
     $_SESSION["user"] = $email;
     $_SESSION["adm"] = true;
     echo "Log in feito com sucesso <br>";
-    header('Location: ../view');
+    header('Location: ../view/index.php?login=true');
   }
 
   $jogador = $jogadorDAO->consultarJogadorPorEmail($email, $conexao->getLink());
@@ -34,6 +34,7 @@
     die("Log in falhou");
   }
 
-  header('Location: ../view')
+  header('Location: ../view/index.php?login=true');
+
 
 ?>
