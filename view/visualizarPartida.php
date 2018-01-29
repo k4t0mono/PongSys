@@ -84,7 +84,15 @@
 
 				<div class="row">
 					<div class="col m6">
-						<h5><?php echo $e1->getNome(); ?></h5>
+						<h5>
+							<?php
+								echo $e1->getNome();
+
+								if($partida->getResultado() == 1) {
+									echo "<small>&nbsp;&nbsp;&nbsp;Win</small>";
+								}
+							?>
+						</h5>
 						<table class="striped responsive-table">
 							<thead>
 								<tr>
@@ -114,7 +122,15 @@
 					</div>
 
 					<div class="col m6">
-						<h5><?php echo $e2->getNome(); ?></h5>
+						<h5>
+							<?php
+								echo $e2->getNome();
+
+								if($partida->getResultado() == 2) {
+									echo "<small>&nbsp;&nbsp;&nbsp;Win</small>";
+								}
+							?>
+						</h5>
 						<table class="striped responsive-table">
 							<thead>
 								<tr>

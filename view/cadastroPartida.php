@@ -132,20 +132,8 @@
 								<div class="input-field col s6">
 									<select id="ganhador" name="ganhador">
 										<option value="null" selected="true">Selecione uma equipe</option>
-										<?php
-											require_once("../persistence/conexao.php");
-											require_once("../persistence/equipeDAO.php");
-
-											$c = new Conexao();
-											$e = new EquipeDAO();
-											$equipes = $e->listarEquipes($c->getLink());
-											if($equipes != null) {
-												foreach($equipes as $equipe) {
-													echo "<option value='" . $equipe->getIdEquipe() . "'>";
-													echo $equipe->getNome() . "</option>";
-												}
-											}
-										?>
+										<option value="1" selected="true">Equipe 1</option>
+										<option value="2" selected="true">Equipe 2</option>
 									</select>
 									<label for="ganhador">Equipe ganhadora</label>
 								</div>
