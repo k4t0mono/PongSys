@@ -136,13 +136,10 @@
   <?php
     $fezLogin = null;
     if(array_key_exists("login", $_GET)){
-      echo $_GET["login"];
-      if($_GET["login"] == "true"){
-      $fezLogin = true;
+        $fezLogin = true;
       }
-      else{
-        $fezLogin = false;
-      }
+    else{
+      $fezLogin = false;
     }
 
     $fezLogoff = null;

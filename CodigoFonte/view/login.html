@@ -71,5 +71,23 @@
 
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+  <?php
+    $fail = null;
+    if(array_key_exists("fail", $_GET)){
+        $fail = true;
+      }
+    else{
+      $fail = false;
+    }
+
+  ?>
+  <script>
+    var fail =  "<?php echo $fezLogoff ?>";
+    if(fail){
+      Materialize.toast("Login falhou :(", 4000);
+    }
+  </script>
+
+
 </body>
 </html>

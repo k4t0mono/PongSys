@@ -21,20 +21,22 @@
     echo "Log in feito com sucesso <br>";
     header('Location: ../view/index.php?login=true');
   }
-
-  $jogador = $jogadorDAO->consultarJogadorPorEmail($email, $conexao->getLink());
-  if($jogador != null && $jogador->getSenha() == $senha){
-    session_start();
-    $_SESSION["user"] = $email;
-    echo "Log in feito com sucesso <br>";
-
-  }
-
   else{
-    die("Log in falhou");
-  }
+    $jogador = $jogadorDAO->consultarJogadorPorEmail($email, $conexao->getLink());
+    if($jogador != null && $jogador->getSenha() == $senha){
+      session_start();
+      $_SESSION["user"] = $email;
+      echo "Log in feito com sucesso <br>";
 
-  header('Location: ../view/index.php?login=true');
+    }
+    else{
+      header('Location: ../view/login.html?fail');
+      die("Log in falhou");
+
+    }
+
+    header('Location: ../view/index.php?login=true');
+  }
 
 
 ?>
