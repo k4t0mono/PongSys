@@ -1,8 +1,6 @@
 <?php
 
-  require_once ('../model/jogador.php');
-  require_once ('../persistence/jogadorDAO.php');
-  require_once ('../persistence/conexao.php');
+  require_once ('../control/jogadorController.php');
 
   $nome = $_POST["nome"];
   $email = $_POST["email"];
@@ -10,13 +8,9 @@
   $equipe = $_POST["equipe"];
   $senha = $_POST["pass"];
 
-  $jogador = new Jogador($email, $equipe, $nick, $nome, $senha);
+  $jc = new JogadorController();
 
-  $conexao = new Conexao();
-
-  $jogadorDAO = new JogadorDAO();
-
-  $jogadorDAO->cadastrarJogador($jogador, $conexao->getLink());
+  $jc->cadastrarJogador($email, $equipe, $nick, $nome, $senha);
 
   header('Location: ../view/listarJogadores.php');
 

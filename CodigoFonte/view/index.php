@@ -36,11 +36,11 @@
                 echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
               }
               else{
-                echo "<li><a href='login.html'>Login</a></li>";
+                echo "<li><a href='login.php'>Login</a></li>";
               }
             }
             else{
-              echo "<li><a href='login.html'>Login</a></li>";
+              echo "<li><a href='login.php'>Login</a></li>";
             }
           }
         ?>

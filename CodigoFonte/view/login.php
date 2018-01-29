@@ -79,10 +79,10 @@
     else{
       $fail = false;
     }
-
   ?>
   <script>
-    var fail =  "<?php echo $fezLogoff ?>";
+    var fail =  "<?php echo $fail; ?>";
+    // aler(fail);
     if(fail){
       Materialize.toast("Login falhou :(", 4000);
     }
