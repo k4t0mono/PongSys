@@ -36,7 +36,7 @@
               $jogadorDAO = new JogadorDAO();
               $usuario = $jogadorDAO->consultarJogadorPorEmail($_SESSION['user'], $conexao->getLink());
               if($usuario != null){
-                echo "<li><a>Bem-vindo, ".$usuario->getNome()."</a></li>";
+                echo "<li><a href='../view/edicaoJogador.php?nick=".$usuario->getNickname()."'>Bem-vindo, ".$usuario->getNome()."</a></li>";
                 echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
               }
               else{
