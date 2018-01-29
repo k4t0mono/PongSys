@@ -11,8 +11,8 @@
 
       echo $SQL."<br />";
       if (!mysqli_query($link, $SQL)) {
-  			die("Erro na inserção de pessoa");
-  		}
+        die("Erro na inserção de pessoa");
+      }
 
     }
 
@@ -79,8 +79,8 @@
                                   WHERE email = '".$jogadorNovo->getEmail()."';";
 
       if (!mysqli_query($link, $SQL)) {
-  			die("Erro ao editar jogador");
-  		}
+        die("Erro ao editar jogador");
+      }
       return $jogadorNovo->getNickname();
     }
 

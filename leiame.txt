@@ -6,3 +6,10 @@ usuário, a senha e o nome do banco de dados deverá ser configurado no arquivo
 O arquivo principal do sistema é "view/index.php", o arquivo "index.php" na raiz
 do projeto server para redirecionar para a pasta "view" onde contém os arquivos
 do sistema.
+
+O usuario que tem privilegios para inserir dados no sistema é:
+email: root@root.io
+pass: root
+
+Para adicionar mais adiministradores no sistema deve ser feito diretamente no
+Banco de Dados.
