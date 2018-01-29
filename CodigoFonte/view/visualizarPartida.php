@@ -70,9 +70,10 @@
 		$e1 = $e->buscarEquipe($partida->getEquipe1(), $c->getLink());
 		$e2 = $e->buscarEquipe($partida->getEquipe2(), $c->getLink());
 
-		$desempenhos = $d->consultarDesempenhosPorIDPartida($partidaID, $c->getLink());
+		// $desempenhos = $d->consultarDesempenhosPorIDPartida($partidaID, $c->getLink());
 		$d1 = $d->consultarDesempenhosPorIDPartidaDaEquipe($partidaID, $e1->getIdEquipe(), $c->getLink());
 		$d2 = $d->consultarDesempenhosPorIDPartidaDaEquipe($partidaID, $e2->getIdEquipe(), $c->getLink());
+		// echo $d2->getIdPartida();
 
 	?>
 	<div class="container center-align">
@@ -109,7 +110,7 @@
 											$jogador = $j->consultarJogadorPorEmail($ds->getIdJogador(), $c->getLink());
 
 											echo "<tr>";
-											echo "<td>".$jogador->getNickname()."</td>";
+											echo "<td><a href='visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNickname()."</td>";
 											echo "<td>".$ds->getEliminacoes()."</td>";
 											echo "<td>".$ds->getMortes()."</td>";
 											echo "<td>".$ds->getAssistencias()."</td>";

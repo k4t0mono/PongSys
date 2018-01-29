@@ -96,19 +96,19 @@
 
 					echo "<td>";
 					if($estado == "Finalizada") {
-						$result = $e->buscarEquipe($pr->getResultado(), $c->getLink())->getNome();
+
+						if($pr->getResultado() == 1) {
+							$win = $pr->getEquipe1();
+						} else {
+							$win = $pr->getEquipe2();
+						}
+
+						$result = $e->buscarEquipe($win, $c->getLink())->getNome();
 						echo $result;
 					} else {
 						echo "...";
 					}
 					echo "</td>";
-
-					// echo "<tr>";
-					// echo "<td><a href = '../view/visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNome()."</td>";
-					// echo "<td>".$jogador->getNickname()."</td>";
-					// $equipe = $e->buscarEquipe($jogador->getIdEquipe(), $c->getLink());
-					// echo "<td>".$equipe->getNome()."</td>";
-					// echo "</tr>";
 				}
 
 				echo "</tbody>";

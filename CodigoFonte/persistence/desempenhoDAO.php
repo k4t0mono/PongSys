@@ -37,7 +37,7 @@ class DesempenhoDAO {
 	function consultarDesempenhosPorIDPartidaDaEquipe($id, $equipeID, $link) {
 		$SQL = "SELECT D.idPartida, D.email_jogador, D.eliminações, D.mortes, D.assistencias
 						FROM Jogador as J, Desempenho as D WHERE J.idEquipe=".$equipeID." and
-						D.email_jogador = J.email;";
+						D.email_jogador = J.email and D.idPartida =".$id.";";
 
 		$retorno = mysqli_query($link, $SQL);
 		if(!$retorno) {
