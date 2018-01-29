@@ -12,7 +12,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">PongSys</a>
+      <a href="../view" class="brand-logo">PongSys</a>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="../view">Home</a></li>
@@ -39,11 +39,11 @@
                 echo "<li><a href='../control/logoff.php'>Logoff</a></li>";
               }
               else{
-                echo "<li><a href='login.php'>Login</a></li>";
+                echo "<li><a href='login.html'>Login</a></li>";
               }
             }
             else{
-              echo "<li><a href='login.php'>Login</a></li>";
+              echo "<li><a href='login.html'>Login</a></li>";
             }
           }
         ?>

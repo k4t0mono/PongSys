@@ -12,7 +12,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">PongSys</a>
+      <a href="../view" class="brand-logo">PongSys</a>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="../view">Home</a></li>
