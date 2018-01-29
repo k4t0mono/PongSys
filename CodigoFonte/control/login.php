@@ -30,7 +30,7 @@
 
     }
     else{
-      header('Location: ../view/login.html?fail');
+      header('Location: ../view/login.php?fail');
       die("Log in falhou");
 
     }
