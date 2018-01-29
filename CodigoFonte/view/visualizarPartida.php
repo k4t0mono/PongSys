@@ -148,7 +148,7 @@
                       $jogador = $j->consultarJogadorPorEmail($ds->getIdJogador(), $c->getLink());
 
                       echo "<tr>";
-                      echo "<td>".$jogador->getNickname()."</td>";
+                      echo "<td><a href='visualizarJogador.php?nick=".$jogador->getNickname()."'></a>".$jogador->getNickname()."</td>";
                       echo "<td>".$ds->getEliminacoes()."</td>";
                       echo "<td>".$ds->getMortes()."</td>";
                       echo "<td>".$ds->getAssistencias()."</td>";

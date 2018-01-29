@@ -204,21 +204,21 @@ ALTER TABLE `Partida`
 -- Constraints for table `Desempenho`
 --
 ALTER TABLE `Desempenho`
-  ADD CONSTRAINT `fk_Desempenho_Jogador1` FOREIGN KEY (`email_jogador`) REFERENCES `Jogador` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Desempenho_Partida1` FOREIGN KEY (`idPartida`) REFERENCES `Partida` (`idPartida`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Desempenho_Jogador1` FOREIGN KEY (`email_jogador`) REFERENCES `Jogador` (`email`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Desempenho_Partida1` FOREIGN KEY (`idPartida`) REFERENCES `Partida` (`idPartida`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `Jogador`
 --
 ALTER TABLE `Jogador`
-  ADD CONSTRAINT `fk_Jogador_Equipe1` FOREIGN KEY (`idEquipe`) REFERENCES `Equipe` (`idEquipe`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Jogador_Equipe1` FOREIGN KEY (`idEquipe`) REFERENCES `Equipe` (`idEquipe`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `Partida`
 --
 ALTER TABLE `Partida`
-  ADD CONSTRAINT `fk_Partidas_Equipes1` FOREIGN KEY (`equipe1`) REFERENCES `Equipe` (`idEquipe`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Partidas_Equipes2` FOREIGN KEY (`equipe2`) REFERENCES `Equipe` (`idEquipe`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Partidas_Equipes1` FOREIGN KEY (`equipe1`) REFERENCES `Equipe` (`idEquipe`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Partidas_Equipes2` FOREIGN KEY (`equipe2`) REFERENCES `Equipe` (`idEquipe`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -35,20 +35,21 @@ class DesempenhoDAO {
   }
 
   function consultarDesempenhosPorIDPartidaDaEquipe($id, $equipeID, $link) {
-    $SQL = "SELECT D.idPartida, D.email_jogador, D.eliminações, D.mortes, D.assistencias
+    $SQL = "SELECT *
             FROM Jogador as J, Desempenho as D WHERE J.idEquipe=".$equipeID." and
             D.email_jogador = J.email and D.idPartida =".$id.";";
 
+    // echo $SQL;
     $retorno = mysqli_query($link, $SQL);
     if(!$retorno) {
-      die("Erro na consulta de Desempenho");
+      die("Erro na consulta de Desempenho! <br />");
     }
 
     if(mysqli_num_rows($retorno) > 0) {
       $ret = $retorno->fetch_all();
       $desempenho = array();
       foreach($ret as $l) {
-        $desempenho[] = new Desempenho($l[1], $l[0], $l[2], $l[3], $l[4]);
+        $desempenho[] = new Desempenho($l[6], $l[5], $l[7], $l[8], $l[9]);
       }
       return $desempenho;
     }
